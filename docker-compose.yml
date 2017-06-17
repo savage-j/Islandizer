@@ -1,0 +1,14 @@
+version: '2'
+services:
+  longislandapp:
+    image: savagej/islandized
+    ports:
+      - "80:8080"
+    env_file: .env
+    depends_on:
+      - db
+  db:
+    image: postgres:alpine
+    env_file: .env
+    volumes:
+      - ./data:/var/lib/postgresql/data/places
